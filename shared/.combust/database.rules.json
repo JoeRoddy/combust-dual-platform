@@ -1,0 +1,33 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "publicInfo": {
+        ".read": true,
+        ".indexOn": "email",
+        "$uid": {
+          ".write": "$uid === auth.uid"
+        }
+      },
+      "privateInfo": {
+        "$uid": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid"
+        }
+      },
+      "serverInfo": {
+        "$uid": {
+          ".read": "$uid === auth.uid",
+          ".write": "!data.exists()",
+          "isAdmin": {
+            ".validate": "newData.val()===false"
+          },
+          "walletBalance": {
+            ".validate": "newData.val()===0"
+          }
+        }
+      }
+    }
+  }
+}

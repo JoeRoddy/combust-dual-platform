@@ -1,0 +1,17 @@
+{
+  "name": "combust-dual-platform",
+  "version": "1.0.0",
+  "description": "Dual platform application for Combust",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm:watch-shared-files\" \"npm:web\" \"npm:mobile\"",
+    "mobile": "cd mobile && npm start",
+    "web": "cd web && npm start",
+    "watch-shared-files": "PORT=4444 node ./scripts/watchFileChanges.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^3.6.0"
+  }
+}
